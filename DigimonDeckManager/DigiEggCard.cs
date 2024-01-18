@@ -22,5 +22,10 @@ namespace DigimonDeckManager
             form = Form;
             inheritedEffect = InheritedEffect;
         }
+
+        public int Lv { get { return lv; } set { lv = value; } }
+        public string Type { get { return type; } set { type = value; } }
+        public string Form { get { return form; } set { form = value; } }
+        public string InheritedEffect {  get { return inheritedEffect; } set {  inheritedEffect = value; } }
     }
 }
