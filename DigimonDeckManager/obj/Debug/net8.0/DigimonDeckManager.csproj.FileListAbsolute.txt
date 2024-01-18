@@ -1,0 +1,14 @@
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.AssemblyInfoInputs.cache
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.AssemblyInfo.cs
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.csproj.CoreCompileInputs.cache
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\bin\Debug\net8.0\DigimonDeckManager.exe
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\bin\Debug\net8.0\DigimonDeckManager.deps.json
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\bin\Debug\net8.0\DigimonDeckManager.runtimeconfig.json
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\bin\Debug\net8.0\DigimonDeckManager.dll
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\bin\Debug\net8.0\DigimonDeckManager.pdb
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.dll
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\refint\DigimonDeckManager.dll
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.pdb
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\DigimonDeckManager.genruntimeconfig.cache
+C:\Users\mathe\source\repos\DigimonDeckManager\DigimonDeckManager\obj\Debug\net8.0\ref\DigimonDeckManager.dll
