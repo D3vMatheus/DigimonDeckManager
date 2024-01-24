@@ -7,7 +7,7 @@ using System.Windows.Markup;
 
 namespace DigimonDeckManager
 {
-    public abstract class Card
+    abstract class Card
     {
         private string cardNumber;
         private string cardName;

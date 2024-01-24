@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DigimonDeckManager
 {
-    public class OptionCard
+    class OptionCard : TamerCard
     {
+        public OptionCard(string CardNumber, string CardName, string CardRarity, string CardColour, int playCost, string effects, string securityEffects) : base(CardNumber, CardName, CardRarity, CardColour, playCost, effects, securityEffects)
+        {
+        }
     }
 }

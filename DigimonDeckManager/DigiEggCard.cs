@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DigimonDeckManager
 {
-    public class DigiEggCard : Card
+    class DigiEggCard : Card
     {
         private int lv;
         private string type;
