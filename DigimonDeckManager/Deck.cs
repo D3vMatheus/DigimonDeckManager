@@ -10,8 +10,10 @@ namespace DigimonDeckManager
 {
     public class Deck
     {
-        private string _deckName { get { return _deckName; } set { _deckName = value; } }
-        private int _deckId { get; set; }
+        private string _deckName;
+        public string DeckName { get { return _deckName; } set { _deckName = value; } }
+        private int _deckId;
+        public int DeckId { get { return _deckId; } set { _deckId = value; } }
 
 
         public Deck(string DeckName, int DeckId)

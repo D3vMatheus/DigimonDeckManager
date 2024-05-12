@@ -10,69 +10,63 @@ namespace DigimonDeckManager.UseCases
 {
     public class CreateCard
     {
-
         public static Card CreateCardAllTypes() {
-
-            Console.WriteLine("Card number: ");
-            string number = Console.ReadLine();
-
-            Console.WriteLine("Card name: ");
-            string name = Console.ReadLine();
+            
+            string? number, name, type, attribute, evolutionCondition, form, mainEff, secondEff, stringLv, stringPc, stringDp;
+            int? lv, pc, dp;
+            CardCategory category;
+            CardRarity rarity;
+            CardColor color;
+            do
+            {
+                Console.WriteLine("Card number: ");
+                number = Console.ReadLine();
+             
+                Console.WriteLine("Card name: ");
+                name = Console.ReadLine();
+            
+            } while (string.IsNullOrEmpty(number) && string.IsNullOrEmpty(name));
 
             Console.WriteLine("Card rarity: ");
-            string rarity = Console.ReadLine();
-
+            rarity = Selectable.Rarity();
+            
             Console.WriteLine("Card color: ");
-            string color = Console.ReadLine();
-
+            color = Selectable.Color();
+            
             Console.WriteLine("Card category: ");
-            Console.WriteLine($" 0-{CardCategory.DigiEgg}\n 1-{CardCategory.Digimon}\n 2-{CardCategory.Tamer}\n 3-{CardCategory.Option}");
-            int selectOption= Convert.ToUInt16(Console.ReadLine());
-            CardCategory category = new ();
-
-            switch (selectOption)
-            {
-                case 0:
-                    category = CardCategory.DigiEgg;
-                    break;
-                case 1:
-                    category = CardCategory.Digimon;
-                    break;
-                case 2:
-                    category = CardCategory.Tamer;
-                    break;
-                case 3:
-                    category = CardCategory.Option;
-                    break;
-            }
+            category = Selectable.Category();
+            
             Console.WriteLine("Card type: ");
-            string type = Console.ReadLine();
-
+            type = Console.ReadLine();
+            
             Console.WriteLine("Card attribute: ");
-            string attribute= Console.ReadLine();
+            attribute = Console.ReadLine();
+            
+            Console.WriteLine("Card level: (Press enter if doesn't have)");
+            stringLv = Console.ReadLine();
+            lv = IntOrNull.ConvertToNullableInt(stringLv);
 
-            Console.WriteLine("Card level: ");
-            int lv= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Play cost: (Press enter if doesn't have)");
+            stringPc = Console.ReadLine();
+            pc = IntOrNull.ConvertToNullableInt(stringPc);
 
-            Console.WriteLine("Play cost: ");
-            int pc= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digimon power: (Press enter if doesn't have)");
+            stringDp = Console.ReadLine();
+            dp = IntOrNull.ConvertToNullableInt(stringDp);
 
-            Console.WriteLine("Digimon power: ");
-            int dp= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digievolution Condition: (Press enter if doesn't have)");
+            evolutionCondition = Console.ReadLine();
+            
+            Console.WriteLine("Card form/stage: (Press enter if doesn't have)");
+            form = Console.ReadLine();
+            
+            Console.WriteLine("Card main effect: (Press enter if doesn't have)");
+            mainEff = Console.ReadLine();
+            
+            Console.WriteLine("Card secondary effect: (Press enter if doesn't have)");
+            secondEff = Console.ReadLine();
 
-            Console.WriteLine("Digievolution Condition: ");
-            string evolutionCondition = Console.ReadLine();
-
-            Console.WriteLine("Card form/stage: ");
-            string form = Console.ReadLine();
-
-            Console.WriteLine("Card main effect: ");
-            string mainEff= Console.ReadLine();
-
-            Console.WriteLine("Card secondary effect: ");
-            string secondEff= Console.ReadLine();
-
-            Card card = new Card(number, name, rarity, color, category, type, attribute, lv, pc, dp, evolutionCondition, form, mainEff, secondEff);
+            Card card = new(number, name, rarity, color, category, type, attribute, lv, pc, dp, evolutionCondition, form, mainEff, secondEff);
             
             return card;
         }

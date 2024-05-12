@@ -13,8 +13,8 @@ namespace DigimonDeckManager
     {
         private string _cardNumber;
         private string _cardName;
-        private string _cardRarity;
-        private string _cardColour;
+        private CardRarity _cardRarity;
+        private CardColor _cardColour;
         private CardCategory _cardCategory;
         private string? _type;
         private string? _attribute;
@@ -32,7 +32,7 @@ namespace DigimonDeckManager
             _listcards = new List<Card>();
         }
 
-        public Card(string cardNumber, string cardName, string cardRarity, string cardColour, CardCategory cardCategory, string? type, string? attribute, int? lv, int? playCost, int? digimonPower, string? digievolutionCondition, string? form, string? mainEffect, string? secondaryEffect)
+        public Card(string cardNumber, string cardName, CardRarity cardRarity, CardColor cardColour, CardCategory cardCategory, string? type, string? attribute, int? lv, int? playCost, int? digimonPower, string? digievolutionCondition, string? form, string? mainEffect, string? secondaryEffect)
         {
             _cardNumber = cardNumber;
             _cardName = cardName;
@@ -50,10 +50,15 @@ namespace DigimonDeckManager
             _secondaryEffect = secondaryEffect;
         }
 
-        public string CardNumber { get { return _cardNumber; } set { _cardNumber = value; } }
+        public string CardNumber { get { return _cardNumber; }
+            set 
+            {
+                    _cardNumber = value; 
+            }
+        }
         public string CardName { get { return _cardName; } set { _cardName = value; } }
-        public string CardRarity { get { return _cardRarity; } set { _cardRarity = value; } }
-        public string CardColour { get { return _cardColour; } set { _cardColour = value; } }
+        public CardRarity CardRarity { get { return _cardRarity; } set { _cardRarity = value; } }
+        public CardColor CardColour { get { return _cardColour; } set { _cardColour = value; } }
         public CardCategory CardCategory { get { return _cardCategory; } set { _cardCategory = value; } }
         public string? Type { get { return _type; } set { _type = value; } }
         public string? Attribute { get { return _attribute; } set { _attribute = value; } }
@@ -71,7 +76,13 @@ namespace DigimonDeckManager
         public void AddCard()
         {
             Card newCard = CreateCard.CreateCardAllTypes();
-            _listcards.Add(newCard);
+            bool cardExist= _listcards.Any(number => number.Equals(newCard.CardNumber));
+
+            if (_listcards.Count >= 1 && cardExist)
+                Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
+            else
+                _listcards.Add(newCard);
+
             Console.WriteLine("Card sucessfully addded.");
 
         }
