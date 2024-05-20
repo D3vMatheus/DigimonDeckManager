@@ -12,14 +12,15 @@ namespace DigimonDeckManager
     {
         private string _deckName;
         public string DeckName { get { return _deckName; } set { _deckName = value; } }
-        private int _deckId;
-        public int DeckId { get { return _deckId; } set { _deckId = value; } }
+        
+        private List<Card> _cards;
+        public List<Card> Cards { get { return _cards; } set { _cards = value; } }
 
 
-        public Deck(string DeckName, int DeckId)
+        public Deck(string DeckName, List<Card> Cards)
         {
             _deckName = DeckName;
-            _deckId = DeckId;
+            _cards = Cards;
         }
 
 

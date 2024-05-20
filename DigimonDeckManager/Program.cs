@@ -16,4 +16,5 @@ DisplayGeneral.GeneralCardInfo(koromon);
 Card newCard = new();
 newCard.AddCard(koromon); 
 newCard.AddCard();
+newCard.DeleteCard("ST1-02");
 newCard.ShowAllCards();

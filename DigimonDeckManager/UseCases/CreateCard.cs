@@ -17,6 +17,7 @@ namespace DigimonDeckManager.UseCases
             CardCategory category;
             CardRarity rarity;
             CardColor color;
+
             do
             {
                 Console.WriteLine("Card number: ");

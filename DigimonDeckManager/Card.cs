@@ -73,17 +73,20 @@ namespace DigimonDeckManager
         public void AddCard(Card card){
             _listcards.Add(card);
         }
+
         public void AddCard()
         {
             Card newCard = CreateCard.CreateCardAllTypes();
-            bool cardExist= _listcards.Any(number => number.Equals(newCard.CardNumber));
+            bool cardExist= _listcards.Any(n=> n.CardNumber.Contains(newCard.CardNumber));
 
-            if (_listcards.Count >= 1 && cardExist)
-                Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
-            else
+            if (!cardExist)
+            {
                 _listcards.Add(newCard);
+                Console.WriteLine("Card sucessfully addded.");
+            }
+            else
+                Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
 
-            Console.WriteLine("Card sucessfully addded.");
 
         }
         public void ShowAllCards()
@@ -108,5 +111,7 @@ namespace DigimonDeckManager
                 Console.WriteLine("___________________________________");
             }
         }
+
+
     }
 }
