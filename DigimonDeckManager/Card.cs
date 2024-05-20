@@ -112,6 +112,18 @@ namespace DigimonDeckManager
             }
         }
 
+        public void DeleteCard(string number)
+        {
 
+            var cardFound = _listcards.Find(n => n.CardNumber.Contains(number));
+
+            if (cardFound == null)
+                Console.WriteLine("This card doesn't exist");
+            else
+            {
+                _listcards.Remove(cardFound);
+                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was removed");
+            }
+        }
     }
 }
