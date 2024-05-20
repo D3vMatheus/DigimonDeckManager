@@ -37,10 +37,10 @@ namespace DigimonDeckManager.UseCases
             Console.WriteLine("Card category: ");
             category = Selectable.Category();
             
-            Console.WriteLine("Card type: ");
+            Console.WriteLine("Card type: (Press enter if doesn't have)");
             type = Console.ReadLine();
             
-            Console.WriteLine("Card attribute: ");
+            Console.WriteLine("Card attribute: (Press enter if doesn't have)");
             attribute = Console.ReadLine();
             
             Console.WriteLine("Card level: (Press enter if doesn't have)");

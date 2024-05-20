@@ -118,11 +118,26 @@ namespace DigimonDeckManager
             var cardFound = _listcards.Find(n => n.CardNumber.Contains(number));
 
             if (cardFound == null)
-                Console.WriteLine("This card doesn't exist");
+                Console.WriteLine("Couldn't remove because this card doesn't exist");
             else
             {
                 _listcards.Remove(cardFound);
-                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was removed");
+                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed");
+            }
+        }
+
+        public void UpdateCard(string number)
+        {
+
+            var cardFound = _listcards.Find(n => n.CardNumber.Contains(number));
+
+            if (cardFound == null)
+                Console.WriteLine("Couldn't update because this card doesn't exist");
+            else
+            {
+                CardUpdate.Update(cardFound);
+                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully updated");
+
             }
         }
     }
