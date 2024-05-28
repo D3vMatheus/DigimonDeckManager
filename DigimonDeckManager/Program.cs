@@ -13,10 +13,21 @@ DisplayGeneral.GeneralCardInfo(koromon);
 
 //Create method Display info
 //Initiate cards CRUD
-Card newCard = new();
-newCard.AddCard(koromon); 
-newCard.AddCard();
+
+List<Card> card = new();
+card.Add(koromon);
+List<Card> newCards = new();
+
+Deck newdeck = new("teste", newCards);
+
+newdeck.AddCardToDeck(koromon.CardNumber);
+newdeck.ShowDeckCards();
+newdeck.RemoveCardFromDeck("BT1-01");
+newdeck.ShowDeckCards();
+
+/*
 newCard.UpdateCard("ST102");
 newCard.DeleteCard("ST1-02");
-
 newCard.ShowAllCards();
+*/
+

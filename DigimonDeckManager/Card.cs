@@ -25,7 +25,7 @@ namespace DigimonDeckManager
         private string? _form;
         private string? _mainEffect;
         private string? _secondaryEffect;
-        private readonly List<Card> _listcards;
+        public readonly List<Card> _listcards;
 
         public Card()
         {
