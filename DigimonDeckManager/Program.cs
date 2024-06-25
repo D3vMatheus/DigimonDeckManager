@@ -10,20 +10,33 @@ DisplayGeneral.GeneralCardInfo(koromon);
 
 
 
-
 //Create method Display info
 //Initiate cards CRUD
 
-List<Card> card = new();
-card.Add(koromon);
-List<Card> newCards = new();
+CardList cardlist = new();
+cardlist.AddCard(koromon);
 
-Deck newdeck = new("teste", newCards);
+cardlist.AddCard();
+cardlist.UpdateCard("ST1-010");
+cardlist.DeleteCard("BT1-010");
+
+foreach (Card card in CardList.listcards)
+{
+    DisplayGeneral.GeneralCardInfo(card);
+}
+
+/*Card card = new();
+card.AddCard(koromon);
+
+List<Card> cardList = new();
+cardList.Add(card);
+
+Deck newdeck = new("teste", Card._listcards);
 
 newdeck.AddCardToDeck(koromon.CardNumber);
 newdeck.ShowDeckCards();
 newdeck.RemoveCardFromDeck("BT1-01");
-newdeck.ShowDeckCards();
+newdeck.ShowDeckCards();*/
 
 /*
 newCard.UpdateCard("ST102");

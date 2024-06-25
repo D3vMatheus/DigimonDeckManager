@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DigimonDeckManager
 {
-    public class Deck : Card
+    public class Deck : CardList
     {
         private string _deckName;
         public string DeckName { get { return _deckName; } set { _deckName = value; } }
@@ -30,7 +30,7 @@ namespace DigimonDeckManager
             _deck = deck;
         }
 
-        public int MaxCopyCard(string number)
+        public bool MaxCopyCard(string number)
         {
             int count =0;
             foreach(Card n in CardDeck)
@@ -40,8 +40,8 @@ namespace DigimonDeckManager
 
             }
             if (count > 5)
-                return -1;
-            return count;
+                return true;
+            return false;
             
         }
 
@@ -56,28 +56,33 @@ namespace DigimonDeckManager
 
         public void AddCardToDeck(string number)
         {
-            var cardFound = _listcards.Find(n => n.CardNumber.Contains(number));
-
-            if (cardFound == null)
-                Console.WriteLine("Couldn't add to deck because this card doesn't exist");
-            else
-            {
-                if(MaxCopyCard(number) == -1)
+                foreach (var card in listcards)
                 {
-                    Console.WriteLine("Couldn't add to deck due card limit duplicate is already maxed");
+                    if (card == null)
+                        Console.WriteLine("Couldn't add to deck because this card doesn't exist");
+
+                    else
+                    {
+                        if (MaxCopyCard(number) == true)
+                        {
+                            Console.WriteLine("Couldn't add to deck due card limit duplicate is already maxed");
+                            if (card.CardNumber == number)
+                            {
+                                _deck.Add(card);
+                                CardLimit--;
+                                Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
+                            }
+                        }
+                    }
                 }
-                _deck.Add(cardFound);
-                CardLimit--;
-                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully added to {DeckName}");
-            }
         }
 
         public void RemoveCardFromDeck(string number)
         {
-            var cardFound = _listcards.Find(n => n.CardNumber.Contains(number));
+            var cardFound = listcards.Find(n => n.CardNumber.Contains(number));
 
             if (cardFound == null)
-                Console.WriteLine("Couldn't remove to deck because this card doesn't exist");
+                Console.WriteLine("Couldn't remove from deck because this card doesn't exist");
             else
             {
                 _deck.Remove(cardFound);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DigimonDeckManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc29c0a704d8d156b6f8db8eaebd1676058e2c6d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f81b59415e86a405d59d2a29b233d2f7fcbdcf66")]
 [assembly: System.Reflection.AssemblyProductAttribute("DigimonDeckManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DigimonDeckManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

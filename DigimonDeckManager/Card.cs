@@ -11,6 +11,7 @@ namespace DigimonDeckManager
 {
     public class Card
     {
+        
         private string _cardNumber;
         private string _cardName;
         private CardRarity _cardRarity;
@@ -25,12 +26,12 @@ namespace DigimonDeckManager
         private string? _form;
         private string? _mainEffect;
         private string? _secondaryEffect;
-        public readonly List<Card> _listcards;
+/*        static public List<Card> _listcards;
 
         public Card()
         {
             _listcards = new List<Card>();
-        }
+        }*/
 
         public Card(string cardNumber, string cardName, CardRarity cardRarity, CardColor cardColour, CardCategory cardCategory, string? type, string? attribute, int? lv, int? playCost, int? digimonPower, string? digievolutionCondition, string? form, string? mainEffect, string? secondaryEffect)
         {
@@ -70,47 +71,47 @@ namespace DigimonDeckManager
         public string? MainEffect { get { return _mainEffect; } set { _mainEffect = value; } }
         public string? SecondaryEffect { get { return _secondaryEffect; } set { _secondaryEffect= value; } }
 
-        public void AddCard(Card card){
-            _listcards.Add(card);
-        }
+        /*        public void AddCard(Card card){
+                    _listcards.Add(card);
+                }
 
-        public void AddCard()
-        {
-            Card newCard = CreateCard.CreateCardAllTypes();
-            bool cardExist= _listcards.Any(n=> n.CardNumber.Contains(newCard.CardNumber));
+                public void AddCard()
+                {
+                    Card newCard = CreateCard.CreateCardAllTypes();
+                    bool cardExist= _listcards.Any(n=> n.CardNumber.Contains(newCard.CardNumber));
 
-            if (!cardExist)
-            {
-                _listcards.Add(newCard);
-                Console.WriteLine("Card sucessfully addded.");
-            }
-            else
-                Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
+                    if (!cardExist)
+                    {
+                        _listcards.Add(newCard);
+                        Console.WriteLine("Card sucessfully addded.");
+                    }
+                    else
+                        Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
 
 
-        }
-        public void ShowAllCards()
-        {
-            foreach(Card card in _listcards)
-            {
-                Console.WriteLine("___________________________________");
-                Console.WriteLine($"Number: {card.CardNumber}");
-                Console.WriteLine($"Name: {card.CardName}");
-                Console.WriteLine($"Rarity: {card.CardRarity}");
-                Console.WriteLine($"Color: {card.CardColour}");
-                Console.WriteLine($"Category: {card.CardCategory}");
-                Console.WriteLine($"Type: {card.Type}");
-                Console.WriteLine($"Attribute: {card.Attribute}");
-                Console.WriteLine($"Level: {card.Lv}");
-                Console.WriteLine($"PC: {card.PlayCost}");
-                Console.WriteLine($"DP: {card.DigimonPower}");
-                Console.WriteLine($"Digievolution Condition: {card.DigievolutionCondition}");
-                Console.WriteLine($"Form/Stage: {card.Form}");
-                Console.WriteLine($"Main effect: {card.MainEffect}");
-                Console.WriteLine($"Secondary effect: {card.SecondaryEffect}");
-                Console.WriteLine("___________________________________");
-            }
-        }
+                }
+                public void ShowAllCards()
+                {
+                    foreach(Card card in _listcards)
+                    {
+                        Console.WriteLine("___________________________________");
+                        Console.WriteLine($"Number: {card.CardNumber}");
+                        Console.WriteLine($"Name: {card.CardName}");
+                        Console.WriteLine($"Rarity: {card.CardRarity}");
+                        Console.WriteLine($"Color: {card.CardColour}");
+                        Console.WriteLine($"Category: {card.CardCategory}");
+                        Console.WriteLine($"Type: {card.Type}");
+                        Console.WriteLine($"Attribute: {card.Attribute}");
+                        Console.WriteLine($"Level: {card.Lv}");
+                        Console.WriteLine($"PC: {card.PlayCost}");
+                        Console.WriteLine($"DP: {card.DigimonPower}");
+                        Console.WriteLine($"Digievolution Condition: {card.DigievolutionCondition}");
+                        Console.WriteLine($"Form/Stage: {card.Form}");
+                        Console.WriteLine($"Main effect: {card.MainEffect}");
+                        Console.WriteLine($"Secondary effect: {card.SecondaryEffect}");
+                        Console.WriteLine("___________________________________");
+                    }
+                }
 
         public void DeleteCard(string number)
         {
@@ -139,6 +140,6 @@ namespace DigimonDeckManager
                 Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully updated");
 
             }
-        }
+        }*/
     }
 }

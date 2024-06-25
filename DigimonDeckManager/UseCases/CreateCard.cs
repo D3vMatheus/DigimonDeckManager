@@ -21,7 +21,7 @@ namespace DigimonDeckManager.UseCases
             do
             {
                 Console.WriteLine("Card number: ");
-                number = Console.ReadLine();
+                number = Console.ReadLine().ToUpper();
              
                 Console.WriteLine("Card name: ");
                 name = Console.ReadLine();
