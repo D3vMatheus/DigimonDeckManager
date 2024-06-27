@@ -87,5 +87,16 @@ namespace DigimonDeckManager
 
             }
         }
+
+        public Card? GetCard(string number)
+        {
+
+            var cardFound = listcards.Find(n => n.CardNumber.Equals(number));
+
+            if (cardFound == null)
+                return null;
+            else
+                return cardFound;
+        }
     }
 }

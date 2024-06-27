@@ -19,18 +19,12 @@ namespace DigimonDeckManager
         private List<Card> _deck;
         public List<Card> CardDeck { get { return _deck; } set { _deck = value; } }
 
-        public Deck()
-        {
-            _deck = new List<Card>();
-        }
-
-        public Deck(string DeckName, List<Card> deck)
+        public Deck(string DeckName)
         {
             _deckName = DeckName;
-            _deck = deck;
         }
 
-        public bool MaxCopyCard(string number)
+/*        public bool MaxCopyCard(string number)
         {
             int count =0;
             foreach(Card n in CardDeck)
@@ -43,7 +37,7 @@ namespace DigimonDeckManager
                 return true;
             return false;
             
-        }
+        }*/
 
         public void ShowDeckCards()
         {
@@ -56,25 +50,19 @@ namespace DigimonDeckManager
 
         public void AddCardToDeck(string number)
         {
-                foreach (var card in listcards)
-                {
-                    if (card == null)
-                        Console.WriteLine("Couldn't add to deck because this card doesn't exist");
+            var cardFound = GetCard(number);
 
-                    else
-                    {
-                        if (MaxCopyCard(number) == true)
-                        {
-                            Console.WriteLine("Couldn't add to deck due card limit duplicate is already maxed");
-                            if (card.CardNumber == number)
-                            {
-                                _deck.Add(card);
-                                CardLimit--;
-                                Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
-                            }
-                        }
-                    }
+            if (cardFound == null)
+                Console.WriteLine("Couldn't add to deck because this card doesn't exist");
+            else
+            {
+                if (cardFound.CardNumber == number)
+                {
+                    _deck.Add(cardFound);
+                    CardLimit--;
+                    Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully added to {DeckName}");
                 }
+            }
         }
 
         public void RemoveCardFromDeck(string number)
