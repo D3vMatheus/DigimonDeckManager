@@ -22,6 +22,7 @@ namespace DigimonDeckManager
         public Deck(string DeckName)
         {
             _deckName = DeckName;
+            _deck = new List<Card>();
         }
 
 /*        public bool MaxCopyCard(string number)
@@ -50,30 +51,33 @@ namespace DigimonDeckManager
 
         public void AddCardToDeck(string number)
         {
-            var cardFound = GetCard(number);
-
-            if (cardFound == null)
-                Console.WriteLine("Couldn't add to deck because this card doesn't exist");
-            else
+            List<Card> cards = GetAllCardsFromCardList();
+            foreach (Card card in cards)
             {
-                if (cardFound.CardNumber == number)
+                if (card == null)
+                    Console.WriteLine("Couldn't add to deck because this card doesn't exist");
+                else
                 {
-                    _deck.Add(cardFound);
-                    CardLimit--;
-                    Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully added to {DeckName}");
+                    if (card.CardNumber == number)
+                    {
+                        _deck.Add(card);
+                        CardLimit--;
+                        Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
+                    }
                 }
             }
         }
 
         public void RemoveCardFromDeck(string number)
         {
-            var cardFound = listcards.Find(n => n.CardNumber.Contains(number));
+
+            var cardFound = CardDeck.Find(n => n.CardNumber.Contains(number));
 
             if (cardFound == null)
                 Console.WriteLine("Couldn't remove from deck because this card doesn't exist");
             else
             {
-                _deck.Remove(cardFound);
+                CardDeck.Remove(cardFound);
                 CardLimit++;
                 Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed from {DeckName}");
             }

@@ -1,4 +1,5 @@
-﻿using DigimonDeckManager.UseCases;
+﻿using DigimonDeckManager.Enums;
+using DigimonDeckManager.UseCases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,24 @@ namespace DigimonDeckManager
 {
     public class CardList
     {
-        static public List<Card> listcards;
+        public static List<Card> listcards;
 
         public CardList()
         {
             listcards = new List<Card>();
         }
 
+        public static List<Card> GetAllCardsFromCardList()
+        {
+            List<Card> cards = new()
+            {
+                new Card() {CardNumber = "ST1-01", CardName = "Koromon", CardRarity = CardRarity.Uncommon, CardColour = CardColor.Red,
+                            CardCategory= CardCategory.DigiEgg, Type = "Lesser", Attribute = "vaccine", Lv = 2,
+                            PlayCost = null, DigimonPower = null,DigievolutionCondition= null, Form = "In-Training",
+                            MainEffect= null,SecondaryEffect = "While this Digimon has 4 or more digivolution cards, it gets +1000 DP."}
+            };
+            return cards;
+        }
         public void ShowAllCards()
         {
             foreach (Card card in listcards)
@@ -55,8 +67,6 @@ namespace DigimonDeckManager
             }
             else
                 Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
-
-
         }
 
         public void DeleteCard(string number)
@@ -88,15 +98,6 @@ namespace DigimonDeckManager
             }
         }
 
-        public Card? GetCard(string number)
-        {
 
-            var cardFound = listcards.Find(n => n.CardNumber.Equals(number));
-
-            if (cardFound == null)
-                return null;
-            else
-                return cardFound;
-        }
     }
 }

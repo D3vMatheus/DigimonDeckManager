@@ -27,7 +27,10 @@ namespace DigimonDeckManager
         private string? _mainEffect;
         private string? _secondaryEffect;
 
+        public Card()
+        {
 
+        }
         public Card(string cardNumber, string cardName, CardRarity cardRarity, CardColor cardColour, CardCategory cardCategory, string? type, string? attribute, int? lv, int? playCost, int? digimonPower, string? digievolutionCondition, string? form, string? mainEffect, string? secondaryEffect)
         {
             _cardNumber = cardNumber;
