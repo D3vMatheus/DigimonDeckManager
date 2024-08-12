@@ -10,11 +10,12 @@ namespace DigimonDeckManager
 {
     public class CardList
     {
-        public static List<Card> listcards;
+        private static List<Card> _listcards;
+        public List<Card> ListCards { get { return _listcards; } set { _listcards = value; } }
 
         public CardList()
         {
-            listcards = new List<Card>();
+            ListCards = new List<Card>(GetAllCardsFromCardList());
         }
 
         public static List<Card> GetAllCardsFromCardList()
@@ -30,7 +31,7 @@ namespace DigimonDeckManager
         }
         public void ShowAllCards()
         {
-            foreach (Card card in listcards)
+            foreach (Card card in ListCards)
             {
                 Console.WriteLine("___________________________________");
                 Console.WriteLine($"Number: {card.CardNumber}");
@@ -52,17 +53,18 @@ namespace DigimonDeckManager
         }
         public void AddCard(Card card)
         {
-            listcards.Add(card);
+            ListCards.Add(card);
         }
 
         public void AddCard()
         {
             Card newCard = CreateCard.CreateCardAllTypes();
-            bool cardExist = listcards.Any(n => n.CardNumber.Contains(newCard.CardNumber));
+            bool cardExist = ListCards.Any(n => n.CardNumber.Contains(newCard.CardNumber));
 
             if (!cardExist)
             {
-                listcards.Add(newCard);
+                ListCards.Add(newCard);
+                Console.WriteLine(ListCards);
                 Console.WriteLine("Card sucessfully addded.");
             }
             else
@@ -72,13 +74,13 @@ namespace DigimonDeckManager
         public void DeleteCard(string number)
         {
 
-            var cardFound = listcards.Find(n => n.CardNumber.Contains(number.ToUpper()));
+            var cardFound = ListCards.Find(n => n.CardNumber.Contains(number.ToUpper()));
 
             if (cardFound == null)
                 Console.WriteLine("Couldn't remove because this card doesn't exist");
             else
             {
-                listcards.Remove(cardFound);
+                ListCards.Remove(cardFound);
                 Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed");
             }
         }
@@ -86,7 +88,7 @@ namespace DigimonDeckManager
         public void UpdateCard(string number)
         {
 
-            var cardFound = listcards.Find(n => n.CardNumber.Contains(number.ToUpper()));
+            var cardFound = ListCards.Find(n => n.CardNumber.Contains(number.ToUpper()));
 
             if (cardFound == null)
                 Console.WriteLine("Couldn't update because this card doesn't exist");

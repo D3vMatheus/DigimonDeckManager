@@ -25,21 +25,6 @@ namespace DigimonDeckManager
             _deck = new List<Card>();
         }
 
-/*        public bool MaxCopyCard(string number)
-        {
-            int count =0;
-            foreach(Card n in CardDeck)
-            {
-                if(n != null && n.ToString().StartsWith(number))
-                    count++;
-
-            }
-            if (count > 5)
-                return true;
-            return false;
-            
-        }*/
-
         public void ShowDeckCards()
         {
             Console.WriteLine($"Deck - {DeckName}");
@@ -54,18 +39,17 @@ namespace DigimonDeckManager
             List<Card> cards = GetAllCardsFromCardList();
             foreach (Card card in cards)
             {
-                if (card == null)
-                    Console.WriteLine("Couldn't add to deck because this card doesn't exist");
-                else
+
+                if (card.CardNumber == number && CardLimit>0)
                 {
-                    if (card.CardNumber == number)
-                    {
-                        _deck.Add(card);
-                        CardLimit--;
-                        Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
-                    }
+                    CardDeck.Add(card);
+                    CardLimit--;
+                    Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
                 }
+                else
+                    Console.WriteLine("Couldn't add to deck because this card doesn't exist");
             }
+
         }
 
         public void RemoveCardFromDeck(string number)

@@ -9,6 +9,7 @@ using DigimonDeckManager.UseCases;
 
 CardList cardlist = new();
 List<Card> cards = CardList.GetAllCardsFromCardList();
+cardlist.AddCard();
 
 Console.WriteLine(CardList.GetAllCardsFromCardList());
 
@@ -24,3 +25,5 @@ test.AddCardToDeck("BT1-010");
 test.ShowDeckCards();
 test.RemoveCardFromDeck("ST1-01");
 test.ShowDeckCards();
+
+cardlist.ShowAllCards();
