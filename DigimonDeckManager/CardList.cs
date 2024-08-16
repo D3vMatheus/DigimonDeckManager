@@ -1,10 +1,12 @@
 ﻿using DigimonDeckManager.Enums;
 using DigimonDeckManager.UseCases;
+using Npgsql;
+using DigimonDeckManager.DDMDB;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Drawing;
+using System.Runtime.Intrinsics.Arm;
+using System.Xml.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DigimonDeckManager
 {
@@ -31,25 +33,8 @@ namespace DigimonDeckManager
         }
         public void ShowAllCards()
         {
-            foreach (Card card in ListCards)
-            {
-                Console.WriteLine("___________________________________");
-                Console.WriteLine($"Number: {card.CardNumber}");
-                Console.WriteLine($"Name: {card.CardName}");
-                Console.WriteLine($"Rarity: {card.CardRarity}");
-                Console.WriteLine($"Color: {card.CardColour}");
-                Console.WriteLine($"Category: {card.CardCategory}");
-                Console.WriteLine($"Type: {card.Type}");
-                Console.WriteLine($"Attribute: {card.Attribute}");
-                Console.WriteLine($"Level: {card.Lv}");
-                Console.WriteLine($"PC: {card.PlayCost}");
-                Console.WriteLine($"DP: {card.DigimonPower}");
-                Console.WriteLine($"Digievolution Condition: {card.DigievolutionCondition}");
-                Console.WriteLine($"Form/Stage: {card.Form}");
-                Console.WriteLine($"Main effect: {card.MainEffect}");
-                Console.WriteLine($"Secondary effect: {card.SecondaryEffect}");
-                Console.WriteLine("___________________________________");
-            }
+            CardListRepository cards = new();
+            cards.GetAllCardsFromCardList();
         }
         public void AddCard(Card card)
         {
@@ -58,17 +43,8 @@ namespace DigimonDeckManager
 
         public void AddCard()
         {
-            Card newCard = CreateCard.CreateCardAllTypes();
-            bool cardExist = ListCards.Any(n => n.CardNumber.Contains(newCard.CardNumber));
-
-            if (!cardExist)
-            {
-                ListCards.Add(newCard);
-                Console.WriteLine(ListCards);
-                Console.WriteLine("Card sucessfully addded.");
-            }
-            else
-                Console.WriteLine("Can't add this card beacause already exists one with the same Number.");
+            CardListRepository card = new();
+            card.AddCardIntoCardList();
         }
 
         public void DeleteCard(string number)

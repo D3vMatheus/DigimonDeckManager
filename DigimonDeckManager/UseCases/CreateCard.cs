@@ -1,4 +1,6 @@
-﻿using DigimonDeckManager.Enums;
+﻿using DigimonDeckManager.DDMDB;
+using DigimonDeckManager.Enums;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace DigimonDeckManager.UseCases
     public class CreateCard
     {
         public static Card CreateCardAllTypes() {
-            
+
             string? number, name, type, attribute, evolutionCondition, form, mainEff, secondEff, stringLv, stringPc, stringDp;
             int? lv, pc, dp;
             CardCategory category;
@@ -66,6 +68,7 @@ namespace DigimonDeckManager.UseCases
             
             Console.WriteLine("Card secondary effect: (Press enter if doesn't have)");
             secondEff = Console.ReadLine();
+
 
             Card card = new(number, name, rarity, color, category, type, attribute, lv, pc, dp, evolutionCondition, form, mainEff, secondEff);
             
