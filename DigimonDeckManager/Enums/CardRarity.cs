@@ -8,11 +8,11 @@ namespace DigimonDeckManager.Enums
 {
     public enum CardRarity
     {   
-        Common = 0,
-        Uncommon = 1,
-        Rare = 2,
-        SuperRare = 3,
-        SecretRare = 4,
-        Promo = 5,
+        Common,
+        Uncommon,
+        Rare,
+        SuperRare,
+        SecretRare,
+        Promo
     }
 }

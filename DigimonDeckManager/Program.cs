@@ -5,7 +5,6 @@ using DigimonDeckManager.UseCases;
 
 Connection db= new Connection();
 db.OpenConnection();
-
 CardList cardlist = new();
 cardlist.ShowAllCards();
 cardlist.AddCard();

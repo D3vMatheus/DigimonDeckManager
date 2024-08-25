@@ -32,7 +32,7 @@ namespace DigimonDeckManager.UseCases
 
             Console.WriteLine("Card rarity: ");
             rarity = Selectable.Rarity();
-            
+
             Console.WriteLine("Card color: ");
             color = Selectable.Color();
             

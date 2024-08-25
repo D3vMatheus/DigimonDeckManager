@@ -8,9 +8,9 @@ namespace DigimonDeckManager.Enums
 {
     public enum CardCategory
     {
-        DigiEgg = 0,
-        Digimon = 1,
-        Tamer = 2,
-        Option = 3
+        DigiEgg,
+        Digimon,
+        Tamer,
+        Option
     }
 }

@@ -67,28 +67,33 @@ namespace DigimonDeckManager.DDMDB
         }
         public void AddCardIntoCardList()
         {
-            Card newCard = CreateCard.CreateCardAllTypes();
+            Card card = CreateCard.CreateCardAllTypes();
             Connection con = new();
 
-            if (!DoesCardExist(newCard.CardNumber))
+            if (!DoesCardExist(card.CardNumber))
             {
-                string sql = "INSERT INTO \"CardList\" (\r\n\"CardNumber\",\r\n\"CardName\",\r\n\"CardRarity\",\r\n\"CardColor\",\r\n\"CardCategory\",\r\n\"Type\",\r\n\"Attribute\",\r\n\"Lv\",\r\n\"PlayCost\",\r\n\"DigimonPower\",\r\n\"DigievolutionCondition\",\r\n\"Form\",\r\n\"MainEffect\",\r\n\"SecondaryEffect\") VALUES (@number, @name, @rarity, @color, @category, @type, @attribute, @lv, @pc, @dp, @evolutionCondition, @form, @mainEff, @secondEff)";
+                string sql = "INSERT INTO \"CardList\" (\r\n\"CardNumber\",\r\n\"CardName\",\r\n\"CardRarity\",\r\n\"CardColor\",\r\n\"CardCategory\",\r\n\"Type\",\r\n\"Attribute\",\r\n\"Lv\",\r\n\"PlayCost\",\r\n\"DigimonPower\",\r\n\"DigievolutionCondition\",\r\n\"Form\",\r\n\"MainEffect\",\r\n\"SecondaryEffect\") VALUES (@number, @name, @rarity::rarity, @color::colour, @category::category, @type, @attribute, @lv, @pc, @dp, @evolutionCondition, @form, @mainEff, @secondEff)";
                 var cmd = new NpgsqlCommand(sql, con.OpenConnection());
-                cmd.Parameters.AddWithValue("CardNumber", newCard.CardNumber);
-                cmd.Parameters.AddWithValue("CardName", newCard.CardName);
-                cmd.Parameters.AddWithValue("CardRarity", newCard.CardRarity);
-                cmd.Parameters.AddWithValue("CardColor", newCard.CardColour);
-                cmd.Parameters.AddWithValue("CardCategory", newCard.CardCategory);
-                cmd.Parameters.AddWithValue("Type", newCard.Type);
-                cmd.Parameters.AddWithValue("Attribute", newCard.Attribute);
-                cmd.Parameters.AddWithValue("Lv", newCard.Lv);
-                cmd.Parameters.AddWithValue("PlayCost", newCard.PlayCost);
-                cmd.Parameters.AddWithValue("DigimonPower", newCard.DigimonPower);
-                cmd.Parameters.AddWithValue("DigievolutionCondition", newCard.DigievolutionCondition);
-                cmd.Parameters.AddWithValue("Form", newCard.Form);
-                cmd.Parameters.AddWithValue("MainEffect", newCard.MainEffect);
-                cmd.Parameters.AddWithValue("SecondaryEffect", newCard.SecondaryEffect);
-                
+
+                cmd.Parameters.AddWithValue("@number", card.CardNumber);
+                cmd.Parameters.AddWithValue("@name", card.CardName);
+
+                cmd.Parameters.AddWithValue("@rarity", card.CardRarity.ToString());
+                cmd.Parameters.AddWithValue("@color", card.CardColour.ToString());
+                cmd.Parameters.AddWithValue("@category", card.CardCategory.ToString());
+
+                cmd.Parameters.AddWithValue("@type", card.Type ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@attribute", card.Attribute ?? (object)DBNull.Value);
+
+                cmd.Parameters.Add("@lv", NpgsqlTypes.NpgsqlDbType.Integer).Value = (object?)card.Lv ?? DBNull.Value;
+                cmd.Parameters.Add("@pc", NpgsqlTypes.NpgsqlDbType.Integer).Value = (object?)card.PlayCost ?? DBNull.Value;
+                cmd.Parameters.Add("@dp", NpgsqlTypes.NpgsqlDbType.Integer).Value = (object?)card.DigimonPower ?? DBNull.Value;
+
+                cmd.Parameters.AddWithValue("@evolutionCondition", card.DigievolutionCondition ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@form", card.Form ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@mainEff", card.MainEffect ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@secondEff", card.SecondaryEffect ?? (object)DBNull.Value);
+
                 cmd.ExecuteNonQuery();
 
                 Console.WriteLine("Card added");
