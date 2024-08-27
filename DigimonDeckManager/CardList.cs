@@ -36,20 +36,25 @@ namespace DigimonDeckManager
             CardListRepository cards = new();
             cards.GetAllCardsFromCardList();
         }
-        public void AddCard(Card card)
+        public void ShowCardByCardNumber(string cardNumber)
         {
-            ListCards.Add(card);
+            CardListRepository card = new();
+            card.GetCardFromCardNumber(cardNumber);
         }
-
         public void AddCard()
         {
             CardListRepository card = new();
-            card.AddCardIntoCardList();
+            Card newCard = CreateCard.CreateCardAllTypes();
+            card.AddCardIntoCardList(newCard);
         }
 
-        public void DeleteCard(string number)
+        public void DeleteCard()
         {
-
+            Console.WriteLine("Digit the card number to delete a card");
+            string cardNumber = Console.ReadLine().ToUpper();
+            CardListRepository card = new();
+            card.DeleteCardFromList(cardNumber);
+/*
             var cardFound = ListCards.Find(n => n.CardNumber.Contains(number.ToUpper()));
 
             if (cardFound == null)
@@ -59,7 +64,7 @@ namespace DigimonDeckManager
                 ListCards.Remove(cardFound);
                 Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed");
             }
-        }
+*/        }
 
         public void UpdateCard(string number)
         {
