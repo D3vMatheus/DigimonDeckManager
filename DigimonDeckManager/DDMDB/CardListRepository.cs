@@ -33,7 +33,7 @@ namespace DigimonDeckManager.DDMDB
                 string secondaryEffect = rdr["SecondaryEffect"] != DBNull.Value ? rdr["SecondaryEffect"].ToString() : null;
 
                 Console.WriteLine("___________________________________");
-                Console.WriteLine   ("Number: {0}\n" +
+                Console.WriteLine("Number: {0}\n" +
                     "Name: {1}\n" +
                     "Rarity: {2}\n" +
                     "Color: {3}\n" +
@@ -56,7 +56,7 @@ namespace DigimonDeckManager.DDMDB
         }
         public void GetCardFromCardNumber(string cardNumber)
         {
-            if(!DoesCardExist(cardNumber))
+            if (!DoesCardExist(cardNumber))
                 Console.WriteLine("Card doesn't exist");
             else
             {
@@ -99,16 +99,16 @@ namespace DigimonDeckManager.DDMDB
             }
 
         }
-            public bool DoesCardExist(string cardNumber)
-            {
-                Connection con = new();
-            
+        public bool DoesCardExist(string cardNumber)
+        {
+            Connection con = new();
+
             string sql = "SELECT EXISTS (SELECT 1 FROM \"CardList\" WHERE \"CardNumber\"  = @cardNumber)";
             var cmd = new NpgsqlCommand(sql, con.OpenConnection());
             cmd.Parameters.AddWithValue("cardNumber", cardNumber);
-            
+
             bool exists = (bool)cmd.ExecuteScalar();
-            
+
             return exists;
         }
 
@@ -151,6 +151,20 @@ namespace DigimonDeckManager.DDMDB
 
         }
 
+        public void DeleteCardFromList(string cardNumber)
+        {
+            if (!DoesCardExist(cardNumber))
+                Console.WriteLine("Wrong Card Number");
+            else
+            {
+                Connection con = new();
+                string sql = $"DELETE FROM \"CardList\" WHERE \"CardNumber\"  = '{cardNumber}'";
+                var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Card successfully removed ");
+                con.CloseConnection();
+            }
 
+        }
     }
 }

@@ -54,17 +54,7 @@ namespace DigimonDeckManager
             string cardNumber = Console.ReadLine().ToUpper();
             CardListRepository card = new();
             card.DeleteCardFromList(cardNumber);
-/*
-            var cardFound = ListCards.Find(n => n.CardNumber.Contains(number.ToUpper()));
-
-            if (cardFound == null)
-                Console.WriteLine("Couldn't remove because this card doesn't exist");
-            else
-            {
-                ListCards.Remove(cardFound);
-                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed");
-            }
-*/        }
+       }
 
         public void UpdateCard(string number)
         {
