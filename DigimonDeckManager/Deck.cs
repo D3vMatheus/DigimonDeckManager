@@ -1,4 +1,7 @@
-﻿using DigimonDeckManager.UseCases;
+﻿using DigimonDeckManager.DDMDB;
+using DigimonDeckManager.UseCases;
+using Microsoft.VisualBasic;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +22,23 @@ namespace DigimonDeckManager
         private List<Card> _deck;
         public List<Card> CardDeck { get { return _deck; } set { _deck = value; } }
 
-        public Deck(string DeckName)
+        public void CreateNewDeck()
         {
-            _deckName = DeckName;
-            _deck = new List<Card>();
+            DeckRepository deck = new();
+            deck.DeckTable();
         }
+        public void AddCard() {
+            DeckRepository deck = new();
+            string deckId;
+            string number;
 
+            Console.WriteLine("Insert Deck id");
+            deckId = Console.ReadLine();
+            Console.WriteLine("Insert card number");
+            number = Console.ReadLine().ToUpper();
+
+            deck.InsertCardIntoDeck(Convert.ToInt16(deckId), number);
+        }
         public void ShowDeckCards()
         {
             Console.WriteLine($"Deck - {DeckName}");

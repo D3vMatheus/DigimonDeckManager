@@ -6,9 +6,11 @@ using DigimonDeckManager.UseCases;
 Connection db= new Connection();
 db.OpenConnection();
 CardList cardlist = new();
+Deck deck = new();
 cardlist.ShowCardByCardNumber("SGT-1");
 cardlist.ShowCardByCardNumber("SBT-");
-cardlist.DeleteCard();
+deck.AddCard();
+//cardlist.DeleteCard();
 cardlist.ShowAllCards();
 cardlist.AddCard();
 cardlist.ShowAllCards();
@@ -16,7 +18,7 @@ cardlist.ShowAllCards();
 //Create method Display info
 //Initiate cards CRUD
 
-List<Card> cards = CardList.GetAllCardsFromCardList();
+/*List<Card> cards = CardList.GetAllCardsFromCardList();
 cardlist.AddCard();
 
 Console.WriteLine(CardList.GetAllCardsFromCardList());
@@ -31,3 +33,4 @@ test.RemoveCardFromDeck("ST1-01");
 test.ShowDeckCards();
 
 cardlist.ShowAllCards();
+*/
