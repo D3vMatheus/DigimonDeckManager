@@ -36,5 +36,22 @@ namespace DigimonDeckManager.DDMDB
             con.CloseConnection();
 
         }
+        public void ShowDeckCards(int deckId)
+        {
+            Connection con = new();
+            string sql = "SELECT * FROM \"DeckCard\" WHERE \"DeckID\" = @deckId";
+            var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+            cmd.Parameters.AddWithValue("deckId", deckId);
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
+            
+            while(rdr.Read()) {
+                Console.WriteLine("___________________________________");
+
+                Console.WriteLine("ID: {0}\n Number: {1}", rdr.GetValue(0), rdr.GetString(1));
+                Console.WriteLine("___________________________________");
+                
+            }
+            con.CloseConnection();
+        }
     }
 }

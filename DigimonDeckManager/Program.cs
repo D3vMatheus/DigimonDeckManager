@@ -7,6 +7,7 @@ Connection db= new Connection();
 db.OpenConnection();
 CardList cardlist = new();
 Deck deck = new();
+deck.ShowDeckCards();
 cardlist.ShowCardByCardNumber("SGT-1");
 cardlist.ShowCardByCardNumber("SBT-");
 deck.AddCard();

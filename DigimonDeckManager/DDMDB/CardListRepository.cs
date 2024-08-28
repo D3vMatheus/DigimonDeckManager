@@ -96,6 +96,7 @@ namespace DigimonDeckManager.DDMDB
                     form, mainEffect, secondaryEffect);
                     Console.WriteLine("___________________________________");
                 }
+                    con.CloseConnection();
             }
 
         }
