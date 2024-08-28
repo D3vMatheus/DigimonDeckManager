@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,21 +37,43 @@ namespace DigimonDeckManager.DDMDB
             con.CloseConnection();
 
         }
+        public string GetDeckName(int deckId)
+        {
+            Connection con = new();
+
+            string sql = "SELECT \"Name\" FROM \"Deck\" WHERE \"DeckID\" = @deckId";
+            var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+            cmd.Parameters.AddWithValue("deckId", deckId);
+            
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
+            string deckName = " ";
+            if (rdr.Read())
+            {
+                deckName = rdr.GetString(rdr.GetOrdinal("Name"));
+            }
+
+            con.CloseConnection();
+
+            return deckName;
+        }
         public void ShowDeckCards(int deckId)
         {
             Connection con = new();
+
             string sql = "SELECT * FROM \"DeckCard\" WHERE \"DeckID\" = @deckId";
             var cmd = new NpgsqlCommand(sql, con.OpenConnection());
             cmd.Parameters.AddWithValue("deckId", deckId);
+
             NpgsqlDataReader rdr = cmd.ExecuteReader();
-            
+            string deckName = GetDeckName(deckId);
+
+            Console.WriteLine($"Deck: {deckName.ToUpper()}");
+
             while(rdr.Read()) {
                 Console.WriteLine("___________________________________");
-
-                Console.WriteLine("ID: {0}\n Number: {1}", rdr.GetValue(0), rdr.GetString(1));
-                Console.WriteLine("___________________________________");
-                
+                Console.WriteLine($"Number: {rdr["CardNumber"].ToString()}");
             }
+                Console.WriteLine("___________________________________");
             con.CloseConnection();
         }
     }
