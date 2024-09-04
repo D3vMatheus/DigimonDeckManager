@@ -54,37 +54,18 @@ namespace DigimonDeckManager
             }*/
         }
 
-        public void AddCardToDeck(string number)
+        public void DeleteCard()
         {
-            List<Card> cards = GetAllCardsFromCardList();
-            foreach (Card card in cards)
-            {
+            DeckRepository deck = new();
+            string deckId;
+            string number;
 
-                if (card.CardNumber == number && CardLimit>0)
-                {
-                    CardDeck.Add(card);
-                    CardLimit--;
-                    Console.WriteLine($"{card.CardNumber} - {card.CardName} was sucessfully added to {DeckName}");
-                }
-                else
-                    Console.WriteLine("Couldn't add to deck because this card doesn't exist");
-            }
+            Console.WriteLine("Insert Deck id");
+            deckId = Console.ReadLine();
+            Console.WriteLine("Insert card number");
+            number = Console.ReadLine().ToUpper();
 
+            deck.DeleteCardFromDeck(Convert.ToInt16(deckId), number);
         }
-
-        public void RemoveCardFromDeck(string number)
-        {
-
-            var cardFound = CardDeck.Find(n => n.CardNumber.Contains(number));
-
-            if (cardFound == null)
-                Console.WriteLine("Couldn't remove from deck because this card doesn't exist");
-            else
-            {
-                CardDeck.Remove(cardFound);
-                CardLimit++;
-                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully removed from {DeckName}");
-            }
         }
     }
-}

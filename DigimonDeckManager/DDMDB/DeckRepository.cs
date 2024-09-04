@@ -37,6 +37,18 @@ namespace DigimonDeckManager.DDMDB
             con.CloseConnection();
 
         }
+        public void DeleteCardFromDeck(int deckId, string cardNumber)
+        {
+            Connection con = new();
+            string sql = "DELETE FROM \"DeckCard\"\r\nWHERE \"DeckID\" = @deckID AND \"CardNumber\" = @cardNumber";
+            var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+            cmd.Parameters.AddWithValue("deckId", deckId);
+            cmd.Parameters.AddWithValue("cardNumber", cardNumber);
+
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Card deleted sucessfully");
+            con.CloseConnection();
+        }
         public string GetDeckName(int deckId)
         {
             Connection con = new();
