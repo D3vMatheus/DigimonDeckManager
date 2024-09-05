@@ -25,7 +25,11 @@ namespace DigimonDeckManager
         public void CreateNewDeck()
         {
             DeckRepository deck = new();
-            deck.DeckTable();
+            deck.CreateDeck();
+        }
+        public void DeleteDeck()
+        {
+
         }
         public void AddCard() {
             DeckRepository deck = new();
@@ -47,11 +51,6 @@ namespace DigimonDeckManager
             Console.WriteLine("Insert Deck id");
             deckId = Console.ReadLine();
             deck.ShowDeckCards(Convert.ToInt16(deckId));
-/*            Console.WriteLine($"Deck - {DeckName}");
-            foreach (Card card in CardDeck)
-            {
-                Console.WriteLine($"{card.CardNumber} - {card.CardName}");
-            }*/
         }
 
         public void DeleteCard()

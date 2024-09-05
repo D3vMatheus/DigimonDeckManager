@@ -5,34 +5,11 @@ using DigimonDeckManager.UseCases;
 
 Connection db= new Connection();
 db.OpenConnection();
-CardList cardlist = new();
-Deck deck = new();
-deck.ShowDeckCards();
-deck.DeleteCard();
-cardlist.ShowCardByCardNumber("SGT-1");
-cardlist.ShowCardByCardNumber("SBT-");
-deck.AddCard();
-//cardlist.DeleteCard();
-cardlist.ShowAllCards();
-cardlist.AddCard();
-cardlist.ShowAllCards();
-
-//Create method Display info
-//Initiate cards CRUD
-
-/*List<Card> cards = CardList.GetAllCardsFromCardList();
-cardlist.AddCard();
-
-Console.WriteLine(CardList.GetAllCardsFromCardList());
+Menu menu= new Menu();
+menu.StartMenu();
 
 
-
-Deck test = new("test");
-test.AddCardToDeck("ST1-01");
-test.AddCardToDeck("BT1-010");
-test.ShowDeckCards();
-test.RemoveCardFromDeck("ST1-01");
-test.ShowDeckCards();
-
-cardlist.ShowAllCards();
-*/
+//Still need implementation
+//Card limit in deck (duplicate and max limit)
+//DB initialize (creating all tables when start a container)
+//Menu

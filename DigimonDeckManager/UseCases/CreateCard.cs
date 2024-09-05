@@ -28,7 +28,7 @@ namespace DigimonDeckManager.UseCases
                 Console.WriteLine("Card name: ");
                 name = Console.ReadLine();
             
-            } while (string.IsNullOrEmpty(number) && string.IsNullOrEmpty(name));
+            } while (string.IsNullOrEmpty(number) || string.IsNullOrEmpty(name));
 
             Console.WriteLine("Card rarity: ");
             rarity = Selectable.Rarity();

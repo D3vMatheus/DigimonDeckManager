@@ -20,9 +20,25 @@ namespace DigimonDeckManager.DDMDB
         }
         
         public void CreateDeck() {
+            string deckID, name, cardNumber;
+            Console.WriteLine("Insert deck id: ");
+            deckID = Console.ReadLine();
+
+            Console.WriteLine("Insert deck name: ");
+            name = Console.ReadLine();
+
+            Console.WriteLine("Insert card number (Card number need exists in card list!): ");
+            cardNumber = Console.ReadLine();
+
+
+
             Connection con = new();
             string sql = "INSERT INTO \"Deck\"(\"DeckID\",\"Name\", \"CardNumber\")\r\nVALUES(@deckID, @name, @cardNumber)";
             var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+            cmd.Parameters.AddWithValue("@cardNumber", Convert.ToInt16(deckID));
+            cmd.Parameters.AddWithValue("@cardNumber", name);
+            cmd.Parameters.AddWithValue("@cardNumber", cardNumber);
+
             cmd.ExecuteNonQuery();
         }
         public void InsertCardIntoDeck(int deckId, string cardNumber)

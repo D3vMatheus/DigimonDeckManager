@@ -36,8 +36,14 @@ namespace DigimonDeckManager
             CardListRepository cards = new();
             cards.GetAllCardsFromCardList();
         }
-        public void ShowCardByCardNumber(string cardNumber)
+        public void ShowCardByCardNumber()
         {
+            string cardNumber = " ";
+            while(cardNumber == " " || cardNumber == null)
+            {
+                Console.WriteLine("Insert the card number: ");
+                cardNumber = Console.ReadLine().ToUpper();
+            }
             CardListRepository card = new();
             card.GetCardFromCardNumber(cardNumber);
         }
