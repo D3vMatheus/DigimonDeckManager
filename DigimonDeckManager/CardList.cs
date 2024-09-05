@@ -12,25 +12,6 @@ namespace DigimonDeckManager
 {
     public class CardList
     {
-        private static List<Card> _listcards;
-        public List<Card> ListCards { get { return _listcards; } set { _listcards = value; } }
-
-        public CardList()
-        {
-            ListCards = new List<Card>(GetAllCardsFromCardList());
-        }
-
-        public static List<Card> GetAllCardsFromCardList()
-        {
-            List<Card> cards = new()
-            {
-                new Card() {CardNumber = "ST1-01", CardName = "Koromon", CardRarity = CardRarity.Uncommon, CardColour = CardColor.Red,
-                            CardCategory= CardCategory.DigiEgg, Type = "Lesser", Attribute = "vaccine", Lv = 2,
-                            PlayCost = null, DigimonPower = null,DigievolutionCondition= null, Form = "In-Training",
-                            MainEffect= null,SecondaryEffect = "While this Digimon has 4 or more digivolution cards, it gets +1000 DP."}
-            };
-            return cards;
-        }
         public void ShowAllCards()
         {
             CardListRepository cards = new();
@@ -38,12 +19,14 @@ namespace DigimonDeckManager
         }
         public void ShowCardByCardNumber()
         {
-            string cardNumber = " ";
-            while(cardNumber == " " || cardNumber == null)
+            string cardNumber;
+            do
             {
                 Console.WriteLine("Insert the card number: ");
                 cardNumber = Console.ReadLine().ToUpper();
-            }
+
+            } while (string.IsNullOrEmpty(cardNumber));
+
             CardListRepository card = new();
             card.GetCardFromCardNumber(cardNumber);
         }
@@ -61,22 +44,5 @@ namespace DigimonDeckManager
             CardListRepository card = new();
             card.DeleteCardFromList(cardNumber);
        }
-
-        public void UpdateCard(string number)
-        {
-
-            var cardFound = ListCards.Find(n => n.CardNumber.Contains(number.ToUpper()));
-
-            if (cardFound == null)
-                Console.WriteLine("Couldn't update because this card doesn't exist");
-            else
-            {
-                CardUpdate.Update(cardFound);
-                Console.WriteLine($"{cardFound.CardNumber} - {cardFound.CardName} was sucessfully updated");
-
-            }
-        }
-
-
     }
 }

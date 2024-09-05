@@ -79,6 +79,7 @@ namespace DigimonDeckManager.UseCases
             Console.WriteLine("2 - Add card into deck");
             Console.WriteLine("3 - Remove card from deck");
             Console.WriteLine("4 - Show deck cards list");
+            Console.WriteLine("5 - Delete deck");
             Console.WriteLine("Digit a number to choose an option: ");
             string option = Console.ReadLine();
             Deck deck = new();

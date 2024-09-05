@@ -12,4 +12,3 @@ menu.StartMenu();
 //Still need implementation
 //Card limit in deck (duplicate and max limit)
 //DB initialize (creating all tables when start a container)
-//Menu

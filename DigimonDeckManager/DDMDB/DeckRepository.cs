@@ -3,6 +3,7 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,11 +36,20 @@ namespace DigimonDeckManager.DDMDB
             Connection con = new();
             string sql = "INSERT INTO \"Deck\"(\"DeckID\",\"Name\", \"CardNumber\")\r\nVALUES(@deckID, @name, @cardNumber)";
             var cmd = new NpgsqlCommand(sql, con.OpenConnection());
-            cmd.Parameters.AddWithValue("@cardNumber", Convert.ToInt16(deckID));
-            cmd.Parameters.AddWithValue("@cardNumber", name);
+            cmd.Parameters.AddWithValue("@deckID", Convert.ToInt16(deckID));
+            cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@cardNumber", cardNumber);
 
             cmd.ExecuteNonQuery();
+        }
+        public void DeleteDeck(int deckId)
+        {
+            Connection con = new();
+            string sql = "DELETE FROM \"Deck\" WHERE \"DeckID\" = @deckID";
+            var cmd = new NpgsqlCommand(sql, con.OpenConnection());
+            cmd.Parameters.Add("@deckId", NpgsqlTypes.NpgsqlDbType.Integer).Value = (object)deckId;
+            cmd.ExecuteNonQuery();
+            con.CloseConnection();
         }
         public void InsertCardIntoDeck(int deckId, string cardNumber)
         {

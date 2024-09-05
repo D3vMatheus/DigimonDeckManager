@@ -8,19 +8,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DigimonDeckManager
 {
-    public class Deck : CardList
+    public class Deck
     {
-        private string _deckName;
-        public string DeckName { get { return _deckName; } set { _deckName = value; } }
-        private int _cardLimit = 50;
-        public int CardLimit { get { return _cardLimit; } set { _cardLimit = value; } }
-        
-        private List<Card> _deck;
-        public List<Card> CardDeck { get { return _deck; } set { _deck = value; } }
 
         public void CreateNewDeck()
         {
@@ -29,17 +23,31 @@ namespace DigimonDeckManager
         }
         public void DeleteDeck()
         {
+            DeckRepository deck = new();
+            string deckId;
+            do
+            {
+                Console.WriteLine("Insert Deck id");
+                deckId = Console.ReadLine();
 
+            } while (string.IsNullOrEmpty(deckId));
+            deck.DeleteDeck(Convert.ToInt16(deckId));
         }
         public void AddCard() {
             DeckRepository deck = new();
+            
             string deckId;
             string number;
 
-            Console.WriteLine("Insert Deck id");
-            deckId = Console.ReadLine();
-            Console.WriteLine("Insert card number");
-            number = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.WriteLine("Insert Deck id");
+                deckId = Console.ReadLine();
+                Console.WriteLine("Insert card number");
+                number = Console.ReadLine().ToUpper();
+
+            } while (string.IsNullOrEmpty(deckId) || string.IsNullOrEmpty(number));
+
 
             deck.InsertCardIntoDeck(Convert.ToInt16(deckId), number);
         }
@@ -48,8 +56,13 @@ namespace DigimonDeckManager
             DeckRepository deck = new();
             string deckId;
 
-            Console.WriteLine("Insert Deck id");
-            deckId = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Insert Deck id");
+                deckId = Console.ReadLine();
+
+            } while (string.IsNullOrEmpty(deckId));
+
             deck.ShowDeckCards(Convert.ToInt16(deckId));
         }
 
@@ -59,10 +72,14 @@ namespace DigimonDeckManager
             string deckId;
             string number;
 
-            Console.WriteLine("Insert Deck id");
-            deckId = Console.ReadLine();
-            Console.WriteLine("Insert card number");
-            number = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.WriteLine("Insert Deck id");
+                deckId = Console.ReadLine();
+                Console.WriteLine("Insert card number");
+                number = Console.ReadLine().ToUpper();
+
+            } while (string.IsNullOrEmpty(deckId) || string.IsNullOrEmpty(number));
 
             deck.DeleteCardFromDeck(Convert.ToInt16(deckId), number);
         }
